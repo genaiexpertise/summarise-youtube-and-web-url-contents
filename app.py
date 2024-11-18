@@ -12,12 +12,15 @@ from dependencies import check_password
 st.set_page_config(page_title="LangChain:YouTube Video and Web Content Summarizer", page_icon="🦜")
 st.title("🦜 LangChain: YouTube Video and Web Content Summarizer")
 
-if not check_password():
-    st.stop()
+# if not check_password():
+#     st.stop()
 
 st.subheader('Summarize URL')
 
-groq_api_key=st.secrets.APIKEY.GROQ_API_KEY
+#groq_api_key=st.secrets.APIKEY.GROQ_API_KEY
+with st.sidebar:
+    groq_api_key=st.text_input("Groq API Key",value="",type="password")
+
 generic_url=st.text_input("URL",label_visibility="collapsed")
 
 ## Gemma Model USsing Groq API
