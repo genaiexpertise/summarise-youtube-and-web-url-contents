@@ -5,7 +5,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_community.document_loaders import YoutubeLoader,UnstructuredURLLoader
 
 
-from dependencies import check_password
+# from dependencies import check_password
 
 
 ## sstreamlit APP
@@ -18,13 +18,13 @@ st.title("🦜 LangChain: YouTube Video and Web Content Summarizer")
 st.subheader('Summarize URL')
 
 #groq_api_key=st.secrets.APIKEY.GROQ_API_KEY
-with st.sidebar:
-    groq_api_key=st.text_input("Groq API Key",value="",type="password")
+groq_api_key=st.sidebar.text_input("Groq API Key",value="",type="password")
 
 generic_url=st.text_input("URL",label_visibility="collapsed")
 
 ## Gemma Model USsing Groq API
-llm =ChatGroq(model="Gemma-7b-It", groq_api_key=groq_api_key)
+if groq_api_key:
+    llm =ChatGroq(model="Gemma-7b-It", groq_api_key=groq_api_key)
 
 prompt_template="""
 Provide a detail summary of the following content :
