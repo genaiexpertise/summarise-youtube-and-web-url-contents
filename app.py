@@ -9,16 +9,33 @@ from langchain_community.document_loaders import YoutubeLoader,UnstructuredURLLo
 
 
 ## sstreamlit APP
-st.set_page_config(page_title="LangChain:YouTube Video and Web Content Summarizer", page_icon="🦜")
-st.title("🦜 LangChain: YouTube Video and Web Content Summarizer")
+st.set_page_config(page_title="YouTube Video and Web Content Summarizer", page_icon="🦜")
+st.title("🦜YouTube Video and Web Content Summarizer")
 
 # if not check_password():
 #     st.stop()
+#Intro: instructions
+col1, col2 = st.columns(2)
 
-st.subheader('Summarize URL')
+with col1:
+    st.markdown("Automate Your Reading Time! AI-Powered YouTube Video and Web Content Summarizer")
+
+with col2:
+    st.write("Contact with [GenAIExpertise](https://genaiexpertise.com) to build your AI Projects")
+
+
+st.subheader('Summarize URL: ')
 
 #groq_api_key=st.secrets.APIKEY.GROQ_API_KEY
 groq_api_key=st.sidebar.text_input("Groq API Key",value="",type="password")
+
+st.sidebar.markdown("""
+
+- Extract key takeaways from YouTube videos
+- Summarize long-form articles and blog posts in seconds
+- Save time and increase productivity with our fast and accurate summarization engine
+
+""")
 
 generic_url=st.text_input("URL",label_visibility="collapsed")
 
